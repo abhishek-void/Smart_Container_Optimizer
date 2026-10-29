@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Container Loading Optimizer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div>
+        <p class="eyebrow">MINI PROJECT</p>
+        <h1>Smart Container Loading Optimizer</h1>
+        <p class="subtitle">Choose items and find the best load for your container.</p>
+      </div>
+      <button class="btn btn-light" id="sampleBtn" type="button">Load sample</button>
+    </header>
+
+    <section class="summary" aria-label="Summary">
+      <article class="summary-card">
+        <span>Total value</span>
+        <strong id="totalValue">₹0.00</strong>
+      </article>
+      <article class="summary-card">
+        <span>Weight loaded</span>
+        <strong id="loadedWeight">0 kg</strong>
+      </article>
+      <article class="summary-card">
+        <span>Capacity left</span>
+        <strong id="remainingCapacity">50 kg</strong>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">
+        <div>
+          <h2>Container capacity</h2>
+          <p>Set the maximum weight allowed.</p>
+        </div>
+      </div>
+      <div class="capacity-row">
+        <label for="capacity">Capacity (kg)</label>
+        <input id="capacity" type="number" min="0.01" step="any" value="50">
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">
+        <div>
+          <h2>Add an item</h2>
+          <p>Enter the item's name, weight and value.</p>
+        </div>
+      </div>
+      <form id="itemForm">
+        <div class="form-grid">
+          <div>
+            <label for="itemName">Item name</label>
+            <input id="itemName" type="text" maxlength="60" placeholder="e.g. Books" required>
+          </div>
+          <div>
+            <label for="itemWeight">Weight (kg)</label>
+            <input id="itemWeight" type="number" min="0.01" step="any" placeholder="10" required>
+          </div>
+          <div>
+            <label for="itemValue">Value (₹)</label>
+            <input id="itemValue" type="number" min="0" step="any" placeholder="60" required>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary" id="addBtn" type="submit">Add item</button>
+          <button class="btn btn-light hidden" id="cancelEditBtn" type="button">Cancel</button>
+          <span id="message" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="items-heading">
+        <div>
+          <h2>Your items</h2>
+          <p id="itemCount">0 items added</p>
+        </div>
+        <button class="btn btn-light" id="clearBtn" type="button">Clear all</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Weight</th>
+              <th>Value</th>
+              <th>Value per kg</th>
+              <th>Selected</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="itemsBody">
+            <tr><td class="empty" colspan="6">No items yet. Add an item or load sample data.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="bottom-actions">
+        <span id="statusText">Add items to get started.</span>
+        <button class="btn btn-primary" id="optimizeBtn" type="button">Optimize load</button>
+      </div>
+    </section>
+
+    <section class="panel results-panel">
+      <div class="panel-title">
+        <div>
+          <h2>Results</h2>
+          <p id="resultMessage">Your results will appear here after optimization.</p>
+        </div>
+      </div>
+      <div class="utilization">
+        <div class="utilization-heading">
+          <span>Container utilization</span>
+          <strong id="utilizationText">0%</strong>
+        </div>
+        <div class="bar"><span id="utilizationBar"></span></div>
+      </div>
+      <div id="selectedItems" class="selected-items">
+        <p class="muted">No results yet.</p>
+      </div>
+    </section>
+
+    <footer>Smart Container Loading Optimizer · DAA Mini Project</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
